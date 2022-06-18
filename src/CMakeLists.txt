@@ -13,7 +13,7 @@ set(LOG_LEVEL_OFF 6)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME} ${SOURCES_FILES})
-target_link_libraries(${PROJECT_NAME} slirp uv spdlog)
+target_link_libraries(${PROJECT_NAME} slirp uv_a spdlog)
 target_compile_definitions(${PROJECT_NAME} PRIVATE
 	SLIRP_SERVER_VERSION="${PROJECT_VERSION}"
 	SPDLOG_ACTIVE_LEVEL=${LOG_LEVEL_DEBUG}
