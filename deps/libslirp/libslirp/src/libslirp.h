@@ -13,6 +13,8 @@
 typedef int slirp_ssize_t;
 #ifdef BUILDING_LIBSLIRP
 # define SLIRP_EXPORT __declspec(dllexport)
+#elif BUILDING_LIBSLIRP_STATIC
+# define SLIRP_EXPORT
 #else
 # define SLIRP_EXPORT __declspec(dllimport)
 #endif
