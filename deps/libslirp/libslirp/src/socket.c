@@ -634,6 +634,10 @@ void sorecvfrom(struct socket *so)
         DEBUG_MISC(" did recvfrom %d, errno = %d-%s", m->m_len, errno,
                    strerror(errno));
         if (m->m_len < 0) {
+            if (errno == EAGAIN) {
+                printf("eagain on fd %d\n", so->s);
+                return;
+            }
             /* Report error as ICMP */
             switch (so->so_lfamily) {
                 uint8_t code;

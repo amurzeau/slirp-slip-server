@@ -152,101 +152,13 @@ static void fork_exec_child_setup(gpointer data)
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
 
-#if !GLIB_CHECK_VERSION(2, 58, 0)
-typedef struct SlirpGSpawnFds {
-    GSpawnChildSetupFunc child_setup;
-    gpointer user_data;
-    gint stdin_fd;
-    gint stdout_fd;
-    gint stderr_fd;
-} SlirpGSpawnFds;
-
-static inline void slirp_gspawn_fds_setup(gpointer user_data)
-{
-    SlirpGSpawnFds *q = (SlirpGSpawnFds *)user_data;
-
-    dup2(q->stdin_fd, 0);
-    dup2(q->stdout_fd, 1);
-    dup2(q->stderr_fd, 2);
-    q->child_setup(q->user_data);
-}
-#endif
-
-static inline gboolean
-g_spawn_async_with_fds_slirp(const gchar *working_directory, gchar **argv,
-                             gchar **envp, GSpawnFlags flags,
-                             GSpawnChildSetupFunc child_setup,
-                             gpointer user_data, GPid *child_pid, gint stdin_fd,
-                             gint stdout_fd, gint stderr_fd, GError **error)
-{
-#if GLIB_CHECK_VERSION(2, 58, 0)
-    return g_spawn_async_with_fds(working_directory, argv, envp, flags,
-                                  child_setup, user_data, child_pid, stdin_fd,
-                                  stdout_fd, stderr_fd, error);
-#else
-    SlirpGSpawnFds setup = {
-        .child_setup = child_setup,
-        .user_data = user_data,
-        .stdin_fd = stdin_fd,
-        .stdout_fd = stdout_fd,
-        .stderr_fd = stderr_fd,
-    };
-
-    return g_spawn_async(working_directory, argv, envp, flags,
-                         slirp_gspawn_fds_setup, &setup, child_pid, error);
-#endif
-}
-
-#define g_spawn_async_with_fds(wd, argv, env, f, c, d, p, ifd, ofd, efd, err) \
-    g_spawn_async_with_fds_slirp(wd, argv, env, f, c, d, p, ifd, ofd, efd, err)
-
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
 
 int fork_exec(struct socket *so, const char *ex)
 {
-    GError *err = NULL;
-    gint argc = 0;
-    gchar **argv = NULL;
-    int opt, sp[2];
-
-    DEBUG_CALL("fork_exec");
-    DEBUG_ARG("so = %p", so);
-    DEBUG_ARG("ex = %p", ex);
-
-    if (slirp_socketpair_with_oob(sp) < 0) {
-        return 0;
-    }
-
-    if (!g_shell_parse_argv(ex, &argc, &argv, &err)) {
-        g_critical("fork_exec invalid command: %s\nerror: %s", ex, err->message);
-        g_error_free(err);
-        return 0;
-    }
-
-    g_spawn_async_with_fds(NULL /* cwd */, argv, NULL /* env */,
-                           G_SPAWN_SEARCH_PATH, fork_exec_child_setup,
-                           NULL /* data */, NULL /* child_pid */, sp[1], sp[1],
-                           sp[1], &err);
-    g_strfreev(argv);
-
-    if (err) {
-        g_critical("fork_exec: %s", err->message);
-        g_error_free(err);
-        closesocket(sp[0]);
-        closesocket(sp[1]);
-        return 0;
-    }
-
-    so->s = sp[0];
-    closesocket(sp[1]);
-    slirp_socket_set_fast_reuse(so->s);
-    opt = 1;
-    setsockopt(so->s, SOL_SOCKET, SO_OOBINLINE, &opt, sizeof(int));
-    slirp_set_nonblock(so->s);
-    so->slirp->cb->register_poll_fd(so->s, so->slirp->opaque);
-    return 1;
+    return 0;
 }
 
 int open_unix(struct socket *so, const char *unixpath)
