@@ -29,6 +29,10 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#ifdef _WIN32
+# include <io.h>
+#endif
+
 static inline int tftp_session_in_use(struct tftp_session *spt)
 {
     return (spt->slirp != NULL);
