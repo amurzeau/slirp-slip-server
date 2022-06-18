@@ -23,15 +23,16 @@ file(GLOB SOURCE_FILES
 
 add_library(${PROJECT_NAME} ${SOURCE_FILES})
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE G_LOG_DOMAIN="Slirp")
+target_compile_definitions(${PROJECT_NAME} PRIVATE G_LOG_DOMAIN="Slirp" _CRT_SECURE_NO_WARNINGS _CRT_NONSTDC_NO_WARNINGS)
 target_compile_definitions(${PROJECT_NAME} PUBLIC G_BYTE_ORDER=1234)
 
 if(BUILD_SHARED_LIBS)
 	target_compile_definitions(${PROJECT_NAME} PRIVATE
 		BUILDING_LIBSLIRP
 	)
-	target_compile_definitions(${PROJECT_NAME} INTERFACE
-		USING_LIBSLIRP
+else()
+	target_compile_definitions(${PROJECT_NAME} PUBLIC
+		BUILDING_LIBSLIRP_STATIC
 	)
 endif()
 
