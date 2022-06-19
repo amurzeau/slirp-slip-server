@@ -41,7 +41,35 @@ char* checkAndIncrementArgIndex(int argc, char** argv, int& i) {
 	return argv[i];
 }
 
-int main(int argc, char** argv) {
+void allocateConsole() {
+	FILE* fDummy;
+	AllocConsole();
+	freopen_s(&fDummy, "CONIN$", "r", stdin);
+	freopen_s(&fDummy, "CONOUT$", "w", stderr);
+	freopen_s(&fDummy, "CONOUT$", "w", stdout);
+
+	HANDLE hConOut = CreateFile("CONOUT$",
+	                            GENERIC_READ | GENERIC_WRITE,
+	                            FILE_SHARE_READ | FILE_SHARE_WRITE,
+	                            NULL,
+	                            OPEN_EXISTING,
+	                            FILE_ATTRIBUTE_NORMAL,
+	                            NULL);
+	HANDLE hConIn = CreateFile("CONIN$",
+	                           GENERIC_READ | GENERIC_WRITE,
+	                           FILE_SHARE_READ | FILE_SHARE_WRITE,
+	                           NULL,
+	                           OPEN_EXISTING,
+	                           FILE_ATTRIBUTE_NORMAL,
+	                           NULL);
+	SetStdHandle(STD_OUTPUT_HANDLE, hConOut);
+	SetStdHandle(STD_ERROR_HANDLE, hConOut);
+	SetStdHandle(STD_INPUT_HANDLE, hConIn);
+}
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nCmdShow) {
+	int argc = __argc;
+	char** argv = __argv;
 	/**
 	 * --listen <pipe or tcp>
 	 * --connect <pipe or tcp>
@@ -57,6 +85,13 @@ int main(int argc, char** argv) {
 	const char* guestEndpoint = nullptr;
 	bool disableHostAccess = false;
 	std::vector<std::pair<uint16_t, uint16_t>> forwardedPorts;
+
+	for(int i = 1; i < argc; i++) {
+		if(strcmp(argv[i], "--console") == 0 || strcmp(argv[i], "--debug") == 0) {
+			allocateConsole();
+			break;
+		}
+	}
 
 	initializeSpdLog();
 
@@ -127,6 +162,7 @@ int main(int argc, char** argv) {
 			            "  --debug                            Show debug logs\n"
 			            "  --forward <hostport>:<guestport>   Forward host port to guest (can be\n"
 			            "                                     specified multiple times)\n"
+			            "  --console                          Run with a console to show logs\n"
 			            "\n"
 			            "Note: default pipe is {}\n",
 			            argv[0],
