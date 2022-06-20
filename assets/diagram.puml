@@ -1,0 +1,24 @@
+@startuml
+nwdiag {
+  network Serial {
+      description= "Virtualized serial port"
+      SLIP [address = "\\\\.\\pipe\\serial-port" ]
+      Guest [address = "/dev/ttyS0", description="Guest VM SLIP Client\nwith IP 192.168.10.15"]
+  }
+  network SLiRP {
+      address = "192.168.10.x/24"
+      description= "SLiRP virtual network"
+
+      SLIP [address = "192.168.10.15", description="SLIP Server"];
+      Gateway [address = "192.168.10.1"];
+      DNS [address = "192.168.10.2"];
+  }
+
+  network Host {
+      description= "Host (userland TCP/IP stack using SLiRP)"
+      Gateway
+      DNS
+      internet [ shape = cloud];
+  }
+}
+@enduml

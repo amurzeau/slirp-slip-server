@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="378px" preserveAspectRatio="none" style="width:553px;height:378px;background:#FFFFFF;" version="1.1" viewBox="0 0 553 378" width="553px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="129" x="114" y="16.1387">Virtualized serial port</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="123" x="120" y="146.8809">SLiRP virtual network</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="97" x="146" y="160.8496">192.168.10.x/24</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="238" x="5" y="263.6543">Host (userland TCP/IP stack using SLiRP)</text><rect fill="#E2E2F0" height="5" style="stroke:#181818;stroke-width:1.0;" width="297" x="248" y="9.4844"/><rect fill="#E2E2F0" height="5" style="stroke:#181818;stroke-width:1.0;" width="297" x="248" y="140.2266"/><rect fill="#E2E2F0" height="5" style="stroke:#181818;stroke-width:1.0;" width="297" x="248" y="257"/><path d="M310.5,14.4844 L310.5,57.8711 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="101" x="260" y="37.4858">\\.\pipe\serial-port</text><path d="M310.5,91.8398 L310.5,140.2266 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="79" x="271" y="119.8413">192.168.10.15</text><path d="M459,14.4844 L459,50.8867 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="60" x="429" y="33.9937">/dev/ttyS0</text><path d="M306.5,145.2266 L306.5,181.6289 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="72" x="270.5" y="164.7358">192.168.10.1</text><path d="M306.5,215.5977 L306.5,257 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><path d="M455,145.2266 L455,181.6289 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="72" x="419" y="164.7358">192.168.10.2</text><path d="M455,215.5977 L455,257 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><path d="M310.5,262 L310.5,292 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><rect fill="#F1F1F1" height="33.9688" style="stroke:#181818;stroke-width:0.5;" width="88" x="264.5" y="57.8711"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="68" x="274.5" y="79.0098">SLIP Server</text><rect fill="#F1F1F1" height="47.9375" style="stroke:#181818;stroke-width:0.5;" width="146" x="384" y="50.8867"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="121" x="394" y="72.0254">Guest VM SLIP Client</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="126" x="394" y="85.9941">with IP 192.168.10.15</text><rect fill="#F1F1F1" height="33.9688" style="stroke:#181818;stroke-width:0.5;" width="72" x="272.5" y="181.6289"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="52" x="282.5" y="202.7676">Gateway</text><rect fill="#F1F1F1" height="33.9688" style="stroke:#181818;stroke-width:0.5;" width="45" x="434.5" y="181.6289"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="25" x="444.5" y="202.7676">DNS</text><path d="M278.5415,301.7544 C282.3746,293.6183 287.0845,293.036 293.8858,298.3744 C296.7026,288.6156 303.6657,287.0948 310.3483,294.7117 C315.7132,289.1314 321.8477,290.0618 324.4285,297.6816 C330.7259,290.2031 338.4334,292.9468 340.4086,301.888 C347.1668,305.0547 348.7224,311.5338 341.6761,315.9452 C346.6666,321.2802 346.6851,327.0016 338.9745,329.873 C335.524,337.7995 327.9633,336.3452 323.9701,330.4626 C320.6055,339.2493 314.5379,339.072 309.0521,332.5265 C303.2077,338.3687 299.0617,337.1311 295.5099,330.1125 C290.5776,337.4516 282.8452,337.4282 278.9634,329.0093 C270.2945,329.4701 267.0757,322.4695 271.1835,315.5467 C267.5268,308.3041 269.5974,302.2747 278.5415,301.7544 " fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="46" x="285.5" y="318.1387">internet</text><!--MD5=[337abb32c19637e52a03c74fd30fd260]
+@startuml
+nwdiag {
+  network Serial {
+      description= "Virtualized serial port"
+      SLIP [address = "\\\\.\\pipe\\serial-port" ]
+      Guest [address = "/dev/ttyS0", description="Guest VM SLIP Client\nwith IP 192.168.10.15"]
+  }
+  network SLiRP {
+      address = "192.168.10.x/24"
+      description= "SLiRP virtual network"
+
+      SLIP [address = "192.168.10.15", description="SLIP Server"];
+      Gateway [address = "192.168.10.1"];
+      DNS [address = "192.168.10.2"];
+  }
+
+  network Host {
+      description= "Host (userland TCP/IP stack using SLiRP)"
+      Gateway
+      DNS
+      internet [ shape = cloud];
+  }
+}
+@enduml
+
+PlantUML version 1.2022.6beta5(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
