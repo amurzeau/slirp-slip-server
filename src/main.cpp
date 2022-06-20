@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 #include <spdlog/async.h>
 #include <spdlog/cfg/env.h>
 #include <spdlog/sinks/basic_file_sink.h>

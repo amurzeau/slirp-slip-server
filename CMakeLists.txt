@@ -1,5 +1,6 @@
-cmake_minimum_required(VERSION 3.1)
+# SPDX-License-Identifier: MIT
 
+cmake_minimum_required(VERSION 3.1)
 
 find_package(Git QUIET)
 if(GIT_FOUND)

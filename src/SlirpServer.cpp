@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 
 #include "SlirpServer.h"

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 #include "glib.h"
 #include <stdarg.h>
 #include <ctype.h>

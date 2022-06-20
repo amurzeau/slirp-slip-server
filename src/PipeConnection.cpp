@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 #include "PipeConnection.h"
 #include "SlirpServer.h"
 #include <algorithm>

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 cmake_minimum_required(VERSION 3.1)
 
 project(slirp VERSION 4.7.0 LANGUAGES C)
