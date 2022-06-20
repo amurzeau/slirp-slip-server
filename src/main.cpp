@@ -83,7 +83,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine,
 
 	const char* const defaultEndpoint = "\\\\.\\pipe\\serial-port";
 
-	GuestMode guestMode = GuestMode::CLIENT;
+	GuestMode guestMode = GuestMode::SERVER;
 	const char* guestEndpoint = nullptr;
 	bool disableHostAccess = false;
 	std::vector<std::pair<uint16_t, uint16_t>> forwardedPorts;
